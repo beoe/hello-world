@@ -26,5 +26,5 @@ jobs:
         if [ ! -d ~/.ssh ]; then mkdir ~/.ssh; fi
         echo $SSH_KEY > ~/.ssh/key
         chmod 600 ~/.ssh/key
-        rsync -rv -i ~/.ssh/key $GITHUB_WORKSPACE/*.(html|css|js) bernd@komplett.cc:/var/www/test/
+        rsync -rv -e "ssh -i ~/.ssh/key -o StrictHostKeyChecking=no -o port=3305" --exclude=.git $GITHUB_WORKSPACE/ bernd@komplett.cc:/var/www/test/
 

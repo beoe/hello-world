@@ -25,6 +25,8 @@ jobs:
         echo $SSH_KEY
         if [ ! -d ~/.ssh ]; then mkdir ~/.ssh; fi
         echo $SSH_KEY > ~/.ssh/key
+        echo "created ssh key for you"
+        cat ~/.ssh/key
         chmod 600 ~/.ssh/key
         rsync -rv -e "ssh -i ~/.ssh/key -o StrictHostKeyChecking=no -o port=3305" --exclude=.git $GITHUB_WORKSPACE/ bernd@komplett.cc:/var/www/test/
 
